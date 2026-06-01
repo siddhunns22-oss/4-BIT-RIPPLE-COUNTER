@@ -69,9 +69,12 @@ wire d;
 D_FF dff0(q, d, clk, reset);
 not n1(d, q); 
 endmodule
+/* 
+ 
+ 
  Developed by: SIDDHARTH N N 
  RegisterNumber: 212225240148
-*/
+
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 <img width="1048" height="213" alt="Screenshot 2026-06-01 134146" src="https://github.com/user-attachments/assets/44c91c11-1a7b-4f00-9e92-7c13b6bc848e" />
