@@ -24,17 +24,60 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Open Quartus Prime and create a new project.
 
+2.Create a new Verilog HDL File and enter the code for the 4-bit Ripple Counter.
+
+3.Save the file with a .v extension and set it as the Top-Level Entity.
+
+4.Compile the design using Processing → Start Compilation.
+
+5.Verify that the compilation completes without errors.
+
+6.Open Tools → Netlist Viewers → RTL Viewer to view the RTL schematic.
+
+7.Create a waveform file and add the clock (clk) and output (q[3:0]) signals.
+
+8.Apply a clock waveform and run the simulation.
+
+9.Observe the timing diagram and verify that the counter counts from 0000 to 1111 in binary.
 **PROGRAM**
 
-/* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
+module EXP12(q, clk, reset); 
+output [3:0] q;
+input clk, reset;
+T_FF tffo(q[0], clk, reset); 
+T_FF tff1(q[1], q[0], reset); 
+T_FF tff2(q[2], q[1], reset); 
+T_FF tff3(q[3], q[2], reset); 
+endmodule
+module D_FF(q, d, clk, reset); 
+output q;
+input d, clk, reset;
+reg q;
+always @(posedge reset or negedge clk)
+ if (reset)
+q = 1'b0;
+ else
+q = d;
+endmodule
+module T_FF(q, clk, reset);
+output q;
+input clk, reset;
+wire d;
+D_FF dff0(q, d, clk, reset);
+not n1(d, q); 
+endmodule
 
- Developed by: RegisterNumber:
-*/
+ Developed by: SIDDHARTH N N 
+ RegisterNumber: 212225240148
+
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
+<img width="1047" height="212" alt="image" src="https://github.com/user-attachments/assets/0cc95678-970e-4344-8d19-777afa87b777" />
 
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
+<img width="1318" height="658" alt="image" src="https://github.com/user-attachments/assets/db9323e8-9580-423f-896e-bad8c04f23ba" />
 
 **RESULTS**
+Thus the program to implement 4-bit ripple counter has been executed successfully.
